@@ -17,16 +17,15 @@ public class Project2
         Scanner in=new Scanner(System.in);
         int num,num2compare,floor;
         Boolean run = true;
-        
+
         RandomInteger object = new RandomInteger();
         num2compare=object.GiveRandom();
         floor=object.getMin(0);
-        
+
         while(run==true)
         {
             System.out.println("enter a number between 0 and 100");
             num=in.nextInt();
-            
 
             if(num<num2compare)
             {
@@ -45,14 +44,37 @@ public class Project2
             {
                 System.out.println("invalid number");
             }
-            
+
         }
 
     }
+
     static void P2()
     {
+        Scanner in = new Scanner(System.in);    
+
+        System.out.println("Enter the time step"); 
+        float timeStep = in.nextFloat(); 
+
+        AnimClock clock = new AnimClock(); 
+
+        System.out.println("Enter the number of ticks"); 
+        long ticks = in.nextLong(); 
+
+        System.out.println("Enter display interval"); 
+        long interval = in.nextLong(); 
         
+        
+
+        for (long i = 1; i <= ticks; i++) 
+        { 
+            clock.Tick(timeStep,ticks); 
+            long rem = i % interval; 
+            if (rem == 0) 
+            { 
+                System.out.println("Time is " + clock.GetTime()); 
+            } 
+        }  
     }
 
-   
 }
