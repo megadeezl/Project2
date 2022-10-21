@@ -8,7 +8,7 @@ public class Project2
 {
     public static void main (String args[])
     {
-        P1();
+      //  P1();
         P2();
     }
 
@@ -52,15 +52,17 @@ public class Project2
     static void P2()
     {
         Scanner in = new Scanner(System.in);    
-
         System.out.println("Enter the time step"); 
-        float timeStep = in.nextFloat(); 
+        float timeStep = in.nextFloat();  
+        AnimClock clock = new AnimClock(timeStep); // paramic constructor 
 
-        AnimClock clock = new AnimClock(); 
+        //clock.setTimeStep(timeStep);  // for default constuctor 
 
         System.out.println("Enter the number of ticks"); 
-        long ticks = in.nextLong(); 
+        long ticks = in.nextLong();
+        clock.setTick(ticks); // for default constructor
 
+        
         System.out.println("Enter display interval"); 
         long interval = in.nextLong(); 
         
@@ -68,7 +70,7 @@ public class Project2
 
         for (long i = 1; i <= ticks; i++) 
         { 
-            clock.Tick(timeStep,ticks); 
+            clock.Tick(); 
             long rem = i % interval; 
             if (rem == 0) 
             { 
