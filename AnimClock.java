@@ -7,16 +7,28 @@
  */
 public class AnimClock {
 
-    public AnimClock() {
+    //float timeStep will be used for setting timeStep
+    //float totalTime will be used to track totalTime
+    private float timeStep;
+    private float totalTime;
+    //long tick will be used to track tick setting 
+    private long tick;
 
+    //Default Constructor AnimClock will instantiate default settings
+    public AnimClock() {
+        this.timeStep = 1/60; // requirement must be at least 1/60 
+        this.tick = 0;
+        this.totalTime = 0;
     }
 
+    // Parameric Constructor AnimClock will set timeStep instance variable
     public AnimClock(float timeStep) {
         this.timeStep = timeStep;
+        this.tick = 0;
+        this.totalTime = 0;
     }
-    // instance variables - replace the example below with your own
-    private float timeStep,tick;
 
+    // Getters and Setters of Encapsulated Class Variables 
     public float getTimeStep() {
         return this.timeStep;
     }
@@ -29,13 +41,21 @@ public class AnimClock {
         return this.tick;
     }
 
-    public void setTick(float tick) {
+    public void setTick(long tick) {
         this.tick = tick;
     }
 
+    public float getTotalTime() {
+        return this.totalTime;
+    }
+
+    public void setTotalTime(float totalTime) {
+        this.totalTime = totalTime ;
+    }
+
     public void Tick() {
-        setTick(tick + tick);
-       // this.tick = timeStep * tick;
+        float currenttime = getTotalTime();
+        setTotalTime(currenttime + 1);
     }
 
     /**
@@ -47,6 +67,6 @@ public class AnimClock {
     public float GetTime()
     {
         // put your code here
-        return timeStep*tick;
+        return getTotalTime() * getTimeStep() ;
     }
 }
